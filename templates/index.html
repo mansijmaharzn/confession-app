@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block title %}Home{% endblock %}
+{% block content %}
+<div class="container my-4">
+    <h2 align="centre">Feed</h2>
+    <br>
+    <div class="card">
+        {% if allTodo|length==0 %}
+        <div class="alert alert-danger" role="alert">
+            No posts yet! Create a post now!
+        </div>
+        {% else %}
+        {% for todo in allTodo %}
+        <div class="card-header">
+            {{ todo.title }}
+        </div>
+        <div class="card-body">
+            <blockquote class="blockquote mb-0">
+                <p>{{ todo.desc }}</p>
+                <br>
+                <footer class="blockquote-footer">Created at <cite title="Source Title">{{ todo.date_created }}</cite>
+                </footer>
+            </blockquote>
+        </div>
+        {% endfor %}
+        {% endif %}
+    </div>
+</div>
+{% endblock %}
