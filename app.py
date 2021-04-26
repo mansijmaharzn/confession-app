@@ -44,12 +44,13 @@ def delete(sno):
     todo = Todo.query.filter_by(sno=sno).first()
     db.session.delete(todo)
     db.session.commit()
-    return redirect(url_for('home'))
+    return redirect(url_for('moderation'))
 
 
-@ app.route('/profile')
-def profile():
-    return render_template('profile.html')
+@ app.route('/moderation')
+def moderation():
+    allTodo = Todo.query.all()
+    return render_template('moderation.html', allTodo=allTodo)
 
 
 if __name__ == '__main__':
