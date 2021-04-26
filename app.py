@@ -22,7 +22,7 @@ class Todo(db.Model):
 @app.route('/', methods=['GET', 'POST'])
 def home():
     allTodo = Todo.query.all()
-    allTodo = allTodo.reverse()
+    allTodo.reverse()
     return render_template('index.html', allTodo=allTodo)
 
 
